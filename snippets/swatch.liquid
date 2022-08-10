@@ -1,0 +1,27 @@
+<div class="product-swatch">
+  <div class="swatch-flex">
+    {% for value in product.metafields.Color.Color %}
+    <div class="swatch-grid">
+      <a href="{{product.metafields.Product.Product[forloop.index0]}}">
+        <div class="color-swatch" style="background: {{ value }};">
+          <span></span>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+
+  .color-swatch {
+    height: 40px;
+    width: 40px;
+    background: red;
+}
+
+.swatch-flex {
+    display: flex;
+    gap: 10px;
+}
+</style>
