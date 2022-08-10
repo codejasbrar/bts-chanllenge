@@ -104,19 +104,20 @@
             {%- endif -%}
             {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
               <input type="hidden" name="contact[tags]" value="newsletter">
+             
               <div class="newsletter-form__field-wrapper">
               <div class="field">
                 <input
-                  type="date"
-                  name="customer[note][birthday]"
-                  id="birthday"
-                  
-                  autocomplete="birthday"
-                  placeholder="birthday"
-                >
-                <label for="RegisterForm-LastName">
-                  Birthday
-                </label>
+        type="date"
+        name="contact[note][birthday]"
+        id="birthday"
+        
+        autocomplete="birthday"
+        placeholder="birthday"
+      >
+                <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                   Birthday
+                  </label>
               </div>
                 <div class="field">
                   <input
@@ -402,6 +403,27 @@
 
   customElements.define('localization-form', LocalizationForm);
 {% endjavascript %}
+
+<style>
+
+  input#birthday {
+    flex-grow: 1;
+    text-align: left;
+    padding: 1.5rem;
+    margin: var(--inputs-border-width);
+    transition: box-shadow var(--duration-short) ease;
+}
+
+.newsletter-form__field-wrapper .field {
+    z-index: 0;
+    margin-bottom: 20px;
+}
+
+  .field__label, .customer .field label {
+
+    top: -1px;
+  }
+</style>
 
 {% schema %}
 {
