@@ -1,27 +1,20 @@
 <div class="product-swatch">
   <div class="swatch-flex">
-    {% for value in product.metafields.Color.Color %}
+    {% for value in product.metafields.Product.Product %}
     <div class="swatch-grid">
-      <a href="{{product.metafields.Product.Product[forloop.index0]}}">
-        <div class="color-swatch" style="background: {{ value }};">
-          <span></span>
+      {% assign active_product = '' %}
+      {% if all_products[value].id == product.id %}
+        {% assign active_product = 'active' %}
+      {% endif %}
+      <a href="{{value}}" >
+        <div class="{{ active_product }} product-outer">
+          <div class="color-swatch" style="background: {{ product.metafields.Color.Color[forloop.index0] }};">
+            <span></span>
+          </div>
         </div>
       </a>
+      
     </div>
     {% endfor %}
   </div>
 </div>
-
-<style>
-
-  .color-swatch {
-    height: 40px;
-    width: 40px;
-    background: red;
-}
-
-.swatch-flex {
-    display: flex;
-    gap: 10px;
-}
-</style>
